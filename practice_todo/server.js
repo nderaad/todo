@@ -21,9 +21,6 @@ app.set('view engine', 'ejs');
 //--establish connection with MondgoDB using config requirement above
 mongoose.connect(config.getDbConnectionString());
 
-//test DB data
-//setupController(app);
-
 htmlController(app);
 
 

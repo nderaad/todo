@@ -24,7 +24,7 @@ module.exports = function(app) {
     });
   });
 
-  app.post('/api/todo', function(req, res){
+  app.post('/submit', function(req, res){
 
     if(req.body.id){
       Todos.findByIdAndUpdate(req.body.id, {
