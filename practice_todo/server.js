@@ -9,8 +9,7 @@ var config = require('./config');
 var setupController = require('./controllers/setupController');
 var htmlController = require('./controllers/htmlController');
 var apiController = require('./controllers/apiController');
-var passport = require('passport');
-
+var userController = require('./controllers/userController');
 //--establishes port as either an environment port for production
 //--OR port 3000 when running locally
 var port = process.env.PORT || 3000;
@@ -28,6 +27,7 @@ htmlController(app);
 
 apiController(app);
 
+userController(app);
 
 //--connect port
 app.listen(port);

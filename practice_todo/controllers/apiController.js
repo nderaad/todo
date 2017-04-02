@@ -30,6 +30,7 @@ module.exports = function(app) {
       res.send(todos);
     });
   });
+  
 //--  get todo by username
   app.get('/mylist/:uname', function(req, res) {
     Todos.find({username: req.params.uname},
@@ -39,6 +40,7 @@ module.exports = function(app) {
       res.send(todos);
     });
   });
+
 //-- get todo by id
   app.get('/api/todo/:id', function(req, res) {
 
