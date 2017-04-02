@@ -16,10 +16,20 @@ module.exports = function(app) {
     });
     newTodo.save(function(err) {
       if(err) throw err;
-      res.send(newTodo.todo + ' was created successfully');
+
+      res.render('mylist');
     });
   });
 
+//--  get list of all todos (FOR TESTING)
+  app.get('/api/todo', function(req, res) {
+    Todos.find({isDone: false},
+    function(err,todos) {
+      if(err) throw err;
+
+      res.send(todos);
+    });
+  });
 //--  get todo by username
   app.get('/api/todo/:uname', function(req, res) {
     Todos.find({username: req.params.uname},
@@ -29,7 +39,7 @@ module.exports = function(app) {
       res.send(todos);
     });
   });
-
+//-- get todo by id
   app.get('/api/todo/:id', function(req, res) {
 
     Todos.findByID({_id: req.params.id}, function(err, todo) {
@@ -67,7 +77,8 @@ module.exports = function(app) {
       }
     });
 
-  app.delete('/api/todo/', function(req, res) {
+//-- Delete todo by ID
+  app.delete('/delete', function(req, res) {
 
     Todos.findByIdAndRemove(req.body.id, function(err) {
       if(err) throw err;

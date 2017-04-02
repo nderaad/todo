@@ -17,9 +17,8 @@ module.exports = function(app){
     res.render('index')
   });
 
-  app.post('/submit', function(req, res) {
-    var blah = req.body.todo;
-    res.send(blah)
-  });
+  // app.post('/submit', function(req, res) {
+  //   var blah = req.body.todo;
+  // });
 
 }

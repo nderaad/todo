@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
+//--using bluebird promises installed instead of native ES6 for 4X speed
+mongoose.Promise = require('bluebird');
 //--establishing connection with config Folder that
 //--has credentials and location of MongoDB
 var config = require('./config');
