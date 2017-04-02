@@ -31,7 +31,7 @@ module.exports = function(app) {
     });
   });
 //--  get todo by username
-  app.get('/api/todo/:uname', function(req, res) {
+  app.get('/mylist/:uname', function(req, res) {
     Todos.find({username: req.params.uname},
     function(err,todos) {
       if(err) throw err;
@@ -49,10 +49,12 @@ module.exports = function(app) {
     });
   });
 
-  app.post('/api/todo/', function(req, res){
+//-- update todo by id
+  app.post('/update/:uname', function(req, res){
 
     if(req.body.id){
       Todos.findByIdAndUpdate(req.body.id, {
+        username: req.params.uname,
         todo: req.body.todo,
         isDone: req.body.isDone,
         hasAttachment: req.body.hasAttachment}, function(err, todo) {

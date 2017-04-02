@@ -9,6 +9,7 @@ var config = require('./config');
 var setupController = require('./controllers/setupController');
 var htmlController = require('./controllers/htmlController');
 var apiController = require('./controllers/apiController');
+var passport = require('passport');
 
 //--establishes port as either an environment port for production
 //--OR port 3000 when running locally
