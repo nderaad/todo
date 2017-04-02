@@ -23,6 +23,8 @@ mongoose.connect(config.getDbConnectionString());
 
 htmlController(app);
 
+apiController(app);
+
 
 //--connect port
 app.listen(port);

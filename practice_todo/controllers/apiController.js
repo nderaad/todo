@@ -6,6 +6,21 @@ module.exports = function(app) {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended: true}));
 
+//-- Create new todo
+  app.post('/submit', function(req, res){
+    var newTodo = Todos({
+      username: req.body.username,
+      todo: req.body.todo,
+      isDone: false,
+      hasAttachment: req.body.hasAttachment
+    });
+    newTodo.save(function(err) {
+      if(err) throw err;
+      res.send(newTodo.todo + ' was created successfully');
+    });
+  });
+
+//--  get todo by username
   app.get('/api/todo/:uname', function(req, res) {
     Todos.find({username: req.params.uname},
     function(err,todos) {
@@ -24,7 +39,7 @@ module.exports = function(app) {
     });
   });
 
-  app.post('/submit', function(req, res){
+  app.post('/api/todo/', function(req, res){
 
     if(req.body.id){
       Todos.findByIdAndUpdate(req.body.id, {
