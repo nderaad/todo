@@ -7,7 +7,7 @@ module.exports = function(app) {
   app.use(bodyParser.urlencoded({extended: true}));
 
 //-- Create new todo
-  app.post('/submit', function(req, res){
+  app.post('/new', function(req, res){
     var newTodo = Todos({
       username: req.body.username,
       todo: req.body.todo,
@@ -17,7 +17,7 @@ module.exports = function(app) {
     newTodo.save(function(err) {
       if(err) throw err;
 
-      res.render('mylist');
+      res.render('/mylist');
     });
   });
 
@@ -30,7 +30,7 @@ module.exports = function(app) {
       res.send(todos);
     });
   });
-  
+
 //--  get todo by username
   app.get('/mylist/:uname', function(req, res) {
     Todos.find({username: req.params.uname},
